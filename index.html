@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sportsApp">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sports App</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/"
+    crossorigin="anonymous">
+  <script src="./node_modules/angular/angular.min.js"></script>
+  <script src="script.js"></script>
+  <style>
+    .list-group {
+      max-height: 300px;
+      margin-bottom: 10px;
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+  </style>
+</head>
+
+<body>
+  <div ng-controller="mainController">
+
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="card border-dark mb-3">
+          <h5 class="card-header text-white bg-dark">Squad</h5>
+          <div class="card-body">
+            <ul class="list-group">
+              <li ng-repeat="player in myData.players | orderBy:'-strSigning'" ng-click="myData.playerClick(player)"><a href="#">{{player.strPlayer}}</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-sm-5" ng-show="show">
+        <div class="card border-dark mb-3">
+          <div class="card-header text-white bg-dark">
+            <h5>{{name}}</h5>
+            <div style="font-size:2em; color:yellow">
+              <i class="fas fa-star" ng-click="myData.makeFav()"></i>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <p>
+              <img style="height:200px" class="img-responsive" src="{{photo}}" class="img-circle">
+              <div ng-show="image">
+                <h6>No photo available</h6>
+              </div>
+              <br>
+              <strong>Description:</strong>{{description}}
+              <br>
+              <strong>Tranfer Fee:</strong>{{fee}}
+              <br>
+              <strong>Age:</strong>{{age}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-5">
+        <div class="card border-dark mb-3">
+          <h5 class="card-header text-white bg-dark">Favorites</h5>
+          <div class="card-body">
+            <ul class="list-group">
+              
+                <div style="font-size:2em; color:black">
+                    <li ng-repeat="fav in myData.favorites">{{fav}}
+                  <i class="far fa-times-circle" ng-click="myData.unFav()"></i>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+
+  </div>
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
