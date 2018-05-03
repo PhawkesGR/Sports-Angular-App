@@ -27,16 +27,12 @@ angular.module('sportsApp', []).controller('mainController', function ($scope, $
           $scope.description = player.strDescriptionEN;
           $scope.name = player.strPlayer;
           $scope.photo = player.strThumb;
-          $scope.fee = Number(player.strSigning.replace(/[^0-9\.-]+/g,""));
           //json is not complete for all players, so precautions just in case something is empty
           if($scope.description==null){
             $scope.description= "No description available";
           }
           if($scope.photo==null){
             $scope.image == true;
-          }
-          if($scope.fee==null){
-            $scope.fee = "Transfer fee not known";
           }
           $scope.show = true;
 
@@ -47,9 +43,11 @@ angular.module('sportsApp', []).controller('mainController', function ($scope, $
       var favs =[];
       $scope.myData.makeFav = function(){
         // $scope.myData.favorites.push(player);
-        console.log($scope.name);
-        favs.push($scope.name);
-        $scope.myData.favorites = favs;
+        if(!favs.includes($scope.name)){
+          console.log($scope.name);
+          favs.push($scope.name);
+          $scope.myData.favorites = favs;
+        }
       }
 
       //unfavorite
